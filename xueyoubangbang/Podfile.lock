@@ -1,0 +1,26 @@
+PODS:
+  - KMNavigationBarTransition (0.0.8)
+  - RDVTabBarController (1.1.9)
+  - ReactiveCocoa (2.1.8):
+    - ReactiveCocoa/Core (= 2.1.8)
+    - ReactiveCocoa/no-arc (= 2.1.8)
+  - ReactiveCocoa/Core (2.1.8):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.1.8)
+  - XcodeCoverage (1.3.0)
+
+DEPENDENCIES:
+  - KMNavigationBarTransition (~> 0.0.4)
+  - RDVTabBarController (~> 1.1.8)
+  - ReactiveCocoa (= 2.1.8)
+  - XcodeCoverage
+
+SPEC CHECKSUMS:
+  KMNavigationBarTransition: e87fb2b3a194b0d7fded5fd560df83c6f43b942f
+  RDVTabBarController: 67794f7a7a37f8e32f046f85ac67d06ab92d624a
+  ReactiveCocoa: f89f2e009a87951b50321bf9feb958823fcc617e
+  XcodeCoverage: 0ce3700a1ddb548680e7618cb72835a28d95d603
+
+PODFILE CHECKSUM: 9989ef3b40ad5913fb0aa06b25f99030f314f132
+
+COCOAPODS: 1.0.0

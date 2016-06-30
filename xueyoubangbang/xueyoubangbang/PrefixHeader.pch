@@ -1,0 +1,240 @@
+//
+//  PrefixHeader.pch
+//  xueyoubangbang
+//
+//  Created by sdzhu on 15/3/12.
+//  Copyright (c) 2015年 sdzhu. All rights reserved.
+//
+
+#ifndef xueyoubangbang_PrefixHeader_pch
+#define xueyoubangbang_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import "Global/CommonMethod.h"
+#import "AFNetClient.h"
+//#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import "Class/MJRefresh/MJRefresh.h"
+#import "Class/Custom/SwipeableCell.h"
+#import "Class/TencentOpenApi/TencentOpenAPI.framework/Headers/TencentOAuth.h"
+#import "Class/TencentOpenApi/TencentOpenAPI.framework/Headers/QQApi.h"
+#import "Class/TencentOpenApi/TencentOpenAPI.framework/Headers/QQApiInterface.h"
+#import "WeiboSDK.h"
+#import "Class/Weixin/WXApi.h"
+#import "Class/Weixin/WXApiObject.h"
+#import "TencentActivity.h"
+#import "WeixinActivity.h"
+#import "Class/MBProgressHub/MBProgressHUD.h"
+#import "Class/Custom/UIView+Custom.h"
+#import "Class/Custom/UIImage+Scale.h"
+#import "Class/Custom/UICustomNavigationViewController.h"
+#import "Class/Custom/ChineseString.h"
+#import "Class/Custom/pinyin.h"
+#import "Class/Custom/OpenUDID.h"
+#import "Class/Custom/PICircularProgressView.h"
+#import "Class/Custom/LDProgressView.h"
+#import "Class/Custom/Toast.h"
+#import "Class/QBImagePickerController/QBImagePickerController.h"
+#import "Class/Custom/ChooseGetPictureView.h"
+#import "GlobalVar.h"
+#import "Url.h"
+#import "JsonToModel.h"
+#import "BlockAlertView.h"
+#import "XHImageViewer.h"
+#import "UIImageView+XHURLDownload.h"
+#import "UIView+AutoLayout.h"
+#import "LayerCustom.h"
+
+#endif
+
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+//#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+//#define debugMethod()
+#endif
+
+#define isUrlSuccess(dataDict) \
+({\
+    bool isSuccess = NO;    \
+    NSDictionary *result = [dataDict objectForKey:@"result"];\
+    NSString *status = [result objectForKey:@"ret"];\
+    if([@"suc" isEqualToString:status]){\
+        isSuccess = YES;\
+    }\
+    isSuccess;\
+})
+
+#define urlErrorMessage(dataDic) \
+({\
+    NSString *message = nil;\
+    NSDictionary *result = [dataDic objectForKey:@"result"];\
+    NSString *status = [result objectForKey:@"ret"];\
+    if([@"error" isEqualToString:status]){\
+        message = [result objectForKey:@"errorMessage"]; \
+    }\
+    message;\
+})
+
+#define loginType [USER_DEFAULT integerForKey:UserDefaultsKey_LoginType]
+#define isLogin ((loginType == LoginType_NotLogin) ? (NO):(YES))
+#define rolesUser   [GlobalVar instance].user.roles
+#define UserID      [GlobalVar instance].user.userid
+#define roleStudent @"1"
+#define roleTeacher @"2"
+#define roleParent  @"3"
+#define ifRoleStudent [rolesUser isEqualToString:roleStudent]
+#define ifRoleTeacher [rolesUser isEqualToString:roleTeacher]
+#define kHeaderSize         CGSizeMake(120,120)
+#define kPageSize           @"20"
+#define kChineseFontName    @"Heiti SC"
+#define kEnglishFontName    @"HelveticaNeue"
+#define kNumberFontName     @"HelveticaNeue"
+#define kPaddingLeft    10
+#define kPaddingTop     10
+#define kSectionPadding 10
+#define CELL_HEIGHT 50
+#define VIEW_BACKGROUND_COLOR UIColorFromRGB(0xededed)
+#define SECTION_FOOTER_HEIGHT 5
+#define STYLE_COLOR UIColorFromRGB(0xdc4f3d)
+#define STYLE_COLOR_Alpha(alpha) UIColorFromRGBalpha(0xdc4f3d,alpha)
+#define FONTCOLOR_GRAY [UIColor grayColor]
+#define FONTCOLOR_BLACK [UIColor blackColor]
+#define FONTCOLOR_WHITE [UIColor whiteColor]
+#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+#define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define BUTTON_CUSTOM(offsetY) \
+( {\
+    UIButton *CUSTOM_BUTTON = [UIButton buttonWithType:UIButtonTypeCustom];\
+    CUSTOM_BUTTON.frame = CGRectMake(kPaddingLeft, offsetY, SCREEN_WIDTH - kPaddingLeft * 2, 45);\
+    [CUSTOM_BUTTON setTitleColor: [UIColor whiteColor] forState:UIControlStateNormal];\
+    [CUSTOM_BUTTON setBackgroundImage:[UIImage imageNamed:@"btn_finsh_normal"] forState:UIControlStateNormal];\
+    [CUSTOM_BUTTON setBackgroundImage:[UIImage imageNamed:@"btn_finsh_active"] forState:UIControlStateHighlighted];\
+    CUSTOM_BUTTON;\
+})
+
+#define FONT_CUSTOM(fontSize) [UIFont systemFontOfSize:fontSize]
+#define DEFAULT_HEADER  [UIImage imageNamed:@"my_pic"]
+#define DEFAULT_HEADER_M  [UIImage imageNamed:@"photo_stu_boy"]
+#define DEFAULT_HEADER_f  [UIImage imageNamed:@"photo_stu_girl"]
+#define DEFAULT_HEADER_TM  [UIImage imageNamed:@"photo_teacher_boy"]
+#define DEFAULT_HEADER_Tf  [UIImage imageNamed:@"photo_teacher_girl"]
+#define DEFAULT_PIC     [UIImage imageNamed:@"loading.png"]
+#define SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT   ([UIScreen mainScreen].bounds.size.height)
+#define IMAGE(x)        [UIImage imageNamed:x]
+
+#define SCREEN_IPHONE_5 568
+#define SCREEN_IPHONE_4 480
+#define SCREEN_IPHONE_6 667
+#define SCREEN_IPHONE_6P 736
+
+#define kAudioHeight SCREEN_HEIGHT == SCREEN_IPHONE_6P?47:33
+#define kAudioWidth  SCREEN_HEIGHT == SCREEN_IPHONE_6P?150:102
+
+#define IOS_VERSION_7_OR_ABOVE (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)? (YES):(NO))
+#define kNavigateBarHight \
+({\
+CGFloat navh;\
+if(SCREEN_HEIGHT == SCREEN_IPHONE_6P)\
+{\
+navh = 64;\
+}\
+else\
+{\
+if(IOS_VERSION_7_OR_ABOVE)\
+{\
+navh = 64;\
+}\
+else\
+{\
+navh = 44;\
+}\
+}\
+navh;\
+})
+
+#define kTabBarHeight (SCREEN_HEIGHT == SCREEN_IPHONE_6P ? 73.5 : 49)
+#define USER_DEFAULT    [NSUserDefaults standardUserDefaults]
+
+#define RGBA(r,g,b,a)   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGB(r,g,b)      RGBA(r,g,b,1.0f)
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define UIColorFromRGBalpha(rgbValue,alpha) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alpha]
+
+#define UIColorFromRGBA(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+
+#define mainWindow       [UIApplication sharedApplication].keyWindow
+
+#define IOS_VERSION_7_OR_ABOVE (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)? (YES):(NO))
+#define IOS_VERSION ( [[[UIDevice currentDevice] systemVersion] floatValue] )
+#define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
+
+#define CREATE_TABLE(tableStyle) \
+(  \
+{   \
+    UITableView *t = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:tableStyle];\
+    t.delegate = self;      \
+    t.dataSource = self;    \
+    t.backgroundView = nil; \
+    t.backgroundColor = [UIColor clearColor];   \
+    t.separatorStyle = UITableViewCellSeparatorStyleSingleLine; \
+    t.separatorColor = VIEW_BACKGROUND_COLOR;  \
+    UIView *view = [[UIView alloc] init];   \
+    view.backgroundColor = [UIColor clearColor];    \
+    [t setTableFooterView:view];    \
+    t;   \
+})
+#define CREATE_TABLE_WithoutSource(tableStyle) \
+(  \
+{   \
+UITableView *t = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:tableStyle];\
+t.backgroundView = nil; \
+t.backgroundColor = [UIColor clearColor];   \
+t.separatorStyle = UITableViewCellSeparatorStyleSingleLine; \
+t.separatorColor = VIEW_BACKGROUND_COLOR;  \
+UIView *view = [[UIView alloc] init];   \
+view.backgroundColor = [UIColor clearColor];    \
+[t setTableFooterView:view];    \
+t;   \
+})
+#define CREATE_TABLE_ForNote(tableStyle) \
+(  \
+{   \
+UITableView *t = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:tableStyle];\
+t.delegate = nil;      \
+t.dataSource = nil;    \
+t.backgroundView = nil; \
+t.backgroundColor = [UIColor clearColor];   \
+t.separatorStyle = UITableViewCellSeparatorStyleSingleLine; \
+t.separatorColor = VIEW_BACKGROUND_COLOR;  \
+UIView *view = [[UIView alloc] init];   \
+view.backgroundColor = [UIColor clearColor];    \
+[t setTableFooterView:view];    \
+t;   \
+})
+
+#define CREATE_BUTTON(x,y,width,height,normaltitle,selectedtitle,selector) \
+({ \
+    UIButton *t = [[UIButton alloc]initWithFrame:CGRectMake(x, y, width, height)];   \
+    [t setTitle:normaltitle forState:UIControlStateNormal];  \
+    [t setTitle:selectedtitle forState:UIControlStateSelected]; \
+    [t addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside]; \
+    t; \
+});
+
+#define NSIntToNumber(x) [NSNumber numberWithInteger:x]
+#define NSIntTOString(x) [NSString stringWithFormat:@"%ld",x]
+#define weak(x)          __weak __typeof(self) x = self
+#define strong(x)        __strong __typeof(weakself) x = weakself
