@@ -7,6 +7,7 @@ target 'xueyoubangbang' do
 pod 'ReactiveCocoa', '2.1.8'
 pod 'KMNavigationBarTransition', '~> 0.0.4' 
 pod 'RDVTabBarController', '~> 1.1.8'
+pod 'UIImage-Categories',:git =>'https://github.com/Bupterambition/UIImage-Categories.git'
 end
 
 target 'xueyoubangbangTests' do

@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger, BottomMethod){
     [self initNav];
     [self createViews];
     [self.table.legendHeader beginRefreshing];
+    
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

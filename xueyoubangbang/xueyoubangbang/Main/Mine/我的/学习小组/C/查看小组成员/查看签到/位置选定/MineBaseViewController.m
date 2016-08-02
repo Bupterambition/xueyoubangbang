@@ -37,12 +37,12 @@
 }
 
 - (void)initBaiduMap{
-    //设置定位精确度，默认：kCLLocationAccuracyBest
-    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    //指定最小距离更新(米)，默认：kCLDistanceFilterNone
-    [BMKLocationService setLocationDistanceFilter:10.f];
     //初始化BMKLocationService
     _locService = [[BMKLocationService alloc]init];
+    //设置定位精确度，默认：kCLLocationAccuracyBest
+    _locService.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    //指定最小距离更新(米)，默认：kCLDistanceFilterNone
+    _locService.distanceFilter = 10.f;
     _locService.delegate = self;
     //启动LocationService
     [_locService startUserLocationService];
@@ -69,27 +69,6 @@
     {
         NSLog(@"反geo检索发送失败");
     }
-//    [messageManager GetCurrentLocationWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude withCompletionBlock:^(NSArray *CurrentLocation) {
-//        BOOL signSuccess = BMKCircleContainsCoordinate(CurrentLocation)
-//        BMKMapPoint point1 = BMKCircleContainsCoordinate(CLLocationCoordinate2DMake(39.915,116.404));
-//        BMKMapPoint point2 = BMKMapPointForCoordinat(CLLocationCoordinate2DMake(38.915,115.404));
-//        CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);
-//        if (CurrentLocation && CurrentLocation.count) {
-//            NSNotification *notification = [NSNotification notificationWithName:@"GETLOCATIONS" object:CurrentLocation[0]];
-//            [[NSNotificationCenter defaultCenter] postNotification:notification];
-//        }
-//    }];
-//    option.location = CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-//    option.keyword = @" ";
-//    BOOL flag = [searcher poiSearchNearBy:option];
-//    if(flag)
-//    {
-//        NSLog(@"周边检索发送成功");
-//    }
-//    else
-//    {
-//        NSLog(@"周边检索发送失败");
-//    }
 }
 
 //接收反向地理编码结果
