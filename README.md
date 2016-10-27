@@ -1,8 +1,9 @@
 # 学有帮帮 Sharingpop Official App
-![Alt text](http://a1.mzstatic.com/us/r30/Purple71/v4/b1/23/dc/b123dcee-0195-ca04-2b87-8fec349fd0d4/screen696x696.jpeg)
-![](http://a3.mzstatic.com/us/r30/Purple71/v4/af/c8/71/afc871ca-5a0b-ed54-865e-1fa361a5cea4/screen696x696.jpeg)
-![](http://a1.mzstatic.com/us/r30/Purple71/v4/63/e3/6f/63e36f08-215f-4aa9-56fb-95dfa9389a48/screen696x696.jpeg)
-![](http://a4.mzstatic.com/us/r30/Purple71/v4/2e/bd/60/2ebd60f0-5088-eb5c-eeb6-16f0cec15fb7/screen696x696.jpeg)
+
+<img src="http://a1.mzstatic.com/us/r30/Purple71/v4/b1/23/dc/b123dcee-0195-ca04-2b87-8fec349fd0d4/screen696x696.jpeg" width = "160" height = "289" alt="" />
+<img src="http://a3.mzstatic.com/us/r30/Purple71/v4/af/c8/71/afc871ca-5a0b-ed54-865e-1fa361a5cea4/screen696x696.jpeg" width = "160" height = "289" alt="" />
+<img src="http://a1.mzstatic.com/us/r30/Purple71/v4/63/e3/6f/63e36f08-215f-4aa9-56fb-95dfa9389a48/screen696x696.jpeg" width = "160" height = "289" alt="" />
+<img src="http://a4.mzstatic.com/us/r30/Purple71/v4/2e/bd/60/2ebd60f0-5088-eb5c-eeb6-16f0cec15fb7/screen696x696.jpeg" width = "160" height = "289" alt="" />
 
 
 #【简介】
